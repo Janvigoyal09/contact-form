@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact Us | LoanDone Financial Services</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  padding: 20px;
+}
+.the-carrot { display: none; }
+.shell {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.formRow {
+  margin-bottom: 12px;
+}
+.formRowSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.formRowSplit input { width: 100%; }
+input[type=text],
+input[type=email],
+input[type=tel],
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #333333;
+  background: #ffffff;
+  font-family: Arial, sans-serif;
+}
+input[type=text]:focus,
+input[type=email]:focus,
+textarea:focus {
+  border-color: #008080;
+  outline: none;
+}
+textarea {
+  height: 100px;
+  resize: none;
+}
+.qbutton {
+  width: 100%;
+  padding: 12px;
+  background: #ffffff;
+  color: #333333;
+  border: 1px solid #aaaaaa;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+.qbutton:hover {
+  background: #f5f5f5;
+}
+
+/* Thank you screen */
+#thankyou {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+#thankyou .tick {
+  font-size: 52px;
+  margin-bottom: 16px;
+}
+#thankyou h2 {
+  font-size: 20px;
+  color: #1a2332;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+}
+#thankyou p {
+  color: #888;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+#thankyou a {
+  display: inline-block;
+  padding: 11px 32px;
+  background: #1a2332;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+#thankyou a:hover { background: #008080; }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- FORM -->
+  <div id="formSection">
+    <form id="contact" action="https://m5.connective.com.au/api/Leads/LeadHandler.jsp" method="POST" onsubmit="return validateForm()">
+
+      <input class="the-carrot" id="name" type="text" name="name" size="25" value="" autocomplete="off"/>
+
+      <div class="formRowSplit">
+        <input name="namef" type="text" maxlength="40" id="namef" placeholder="*First name" />
+        <input name="namel" type="text" maxlength="40" id="namel" placeholder="*Last name" />
+      </div>
+
+      <div class="formRow">
+        <input name="email" type="text" maxlength="255" id="email" placeholder="*Email" />
+      </div>
+
+      <div class="formRow">
+        <input name="mobile" type="text" maxlength="20" id="mobile" placeholder="Mobile" />
+      </div>
+
+      <div class="formRow">
+        <input name="postcode" type="text" maxlength="50" id="postcode" placeholder="Postcode / Suburb" />
+      </div>
+
+      <div class="formRow">
+        <textarea name="info" id="info" placeholder="Your requirements / comments?"></textarea>
+      </div>
+
+      <div class="formRow">
+        <input class="qbutton" name="Submit" id="Submit" type="submit" value="Send" />
+      </div>
+
+      <input name="region" id="region" type="hidden" value="au" />
+      <input name="advicereq" id="advicereq" type="hidden" value="Home Loan" />
+      <input name="companyId" type="hidden" id="companyId" value="P206244" />
+      <input name="brokerId" type="hidden" id="brokerId" value="CA111077" />
+      <input name="notificationEmail" type="hidden" id="notificationEmail" value="vipul@loandonemortgage.com.au" />
+      <input name="notificationSms" type="hidden" id="notificationSms" value="0420336111" />
+      <input name="returnUrl" type="hidden" id="returnUrl" value="https://loandonemortgage.com.au/contact" />
+      <input name="categoryIds" id="categoryIds" type="hidden" value="" />
+      <input name="addtodmh" id="addtodmh" type="hidden" value="true" />
+
+    </form>
+  </div>
+
+  <!-- THANK YOU -->
+  <div id="thankyou">
+    <div class="tick">✅</div>
+    <h2>Thank you for reaching out!</h2>
+    <p>We've received your enquiry and will be in touch shortly.<br/>One of our home loan specialists will contact you soon.</p>
+    <a href="https://loandonemortgage.com.au">← Back to website</a>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+function validateForm(){
+  var namef = document.forms["contact"]["namef"].value;
+  var namel = document.forms["contact"]["namel"].value;
+  var email = document.forms["contact"]["email"].value;
+  if (!namef) { alert("Please enter your first name"); return false; }
+  if (!namel) { alert("Please enter your last name"); return false; }
+  if (!email) { alert("Please enter your email"); return false; }
+  setTimeout(function(){
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('thankyou').style.display = 'block';
+  }, 500);
+  return true;
+}
+</script>
+
+</body>
+</html>
